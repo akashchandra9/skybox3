@@ -1,0 +1,39 @@
+body{
+  background-image: linear-gradient(to right, #b6fbff, #83a4d4);
+
+}
+
+
+.form2 {
+   
+    text-align: center;
+    margin: 20% 15% 10% 15%;
+    padding:10px 5px 20px 5px;
+    /* background-image: linear-gradient(to right, #ff874c, #ff6c6e); */
+    position: relative;
+
+  
+
+  
+  }
+  input{
+    width: 220px;
+    height:24px;
+  }
+  .log {
+    border-radius: 2px;;
+    color: rgb(0, 0, 0);
+    height: 30px;
+    width:80px;
+    background-color: antiquewhite;
+    
+  
+  }
+  .log :hover{
+
+    background-color: pink;
+    color:yellow;
+    cursor: pointer;
+  }
+
+  
