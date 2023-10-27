@@ -4,19 +4,44 @@ const bodyparser=require('body-parser')
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended:true}));
 var GameModel = require('./Gamemodel');
-const mongoose = require('mongoose')
+// const mongoose = require('mongoose')
 
 var Validator = require('validator');
-mongoose.connect("mongodb://127.0.0.1:27017/Register2", {
-   useNewUrlParser: true,
-   useUnifiedTopology: true
-});
+const { MongoClient, ServerApiVersion } = require('mongodb');
+const uri = "mongodb+srv://Skybox:19oH5t2sIzC8SrFi@cluster0.n4ds3aw.mongodb.net/?retryWrites=true&w=majority";
 
-
-const connection = mongoose.connection;
-connection.once('open', () => {
-  console.log("MongoDB database connection established successfully");
+// Create a MongoClient with a MongoClientOptions object to set the Stable API version
+const client = new MongoClient(uri, { 
+  serverApi: { 
+    version: ServerApiVersion.v1,
+    strict: true,
+    deprecationErrors: true,
+  }
 }); 
+
+async function run() {
+  try {
+    // Connect the client to the server	(optional starting in v4.7)
+    await client.connect();
+    // Send a ping to confirm a successful connection
+    await client.db("admin").command({ ping: 1 });
+    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+  } finally {
+    // Ensures that the client will close when you finish/error
+    await client.close();
+  }
+}
+run().catch(console.dir);
+// mongoose.connect("mongodb://127.0.0.1:27017/Register2", {
+//    useNewUrlParser: true,
+//    useUnifiedTopology: true
+// });
+
+
+// const connection = mongoose.connection;
+// connection.once('open', () => {
+//   console.log("MongoDB database connection established successfully");
+// }); 
 
 
 app.get('/',(req,res)=>{
