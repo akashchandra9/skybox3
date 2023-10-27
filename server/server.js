@@ -4,7 +4,7 @@ const bodyparser=require('body-parser')
 app.use(bodyparser.json());
 app.use(bodyparser.urlencoded({extended:true}));
 var GameModel = require('./Gamemodel');
-// const mongoose = require('mongoose')
+const mongoose = require('mongoose')
 
 var Validator = require('validator');
 const { MongoClient, ServerApiVersion } = require('mongodb');
